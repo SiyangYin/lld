@@ -1,11 +1,11 @@
-package org.example.lld.game;
+package org.example.lld.poker;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import static org.example.lld.game.PlayerState.FOLD;
-import static org.example.lld.game.Value.*;
+import static org.example.lld.poker.PlayerState.FOLD;
+import static org.example.lld.poker.Value.*;
 
 public class Player {
     PlayerState state;

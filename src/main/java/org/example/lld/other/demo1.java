@@ -1,7 +1,6 @@
-package org.example;
+package org.example.lld.other;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class demo1 {
     public static void main(String[] args) {

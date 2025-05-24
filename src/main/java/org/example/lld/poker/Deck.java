@@ -1,4 +1,4 @@
-package org.example.lld.game;
+package org.example.lld.poker;
 
 import java.util.LinkedList;
 

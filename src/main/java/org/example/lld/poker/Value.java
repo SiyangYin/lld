@@ -1,4 +1,4 @@
-package org.example.lld.game;
+package org.example.lld.poker;
 
 public enum Value {
     NONE(-1),

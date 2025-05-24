@@ -1,10 +1,9 @@
-package org.example.lld.game;
+package org.example.lld.poker;
 
 import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
 
-import static org.example.lld.game.PlayerState.FOLD;
+import static org.example.lld.poker.PlayerState.FOLD;
 
 public class Dealer {
     Deck deck;

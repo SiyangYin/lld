@@ -1,4 +1,4 @@
-package org.example;
+package org.example.lld.other;
 
 import java.util.List;
 
