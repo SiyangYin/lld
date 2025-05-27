@@ -10,11 +10,13 @@ import static org.example.lld.poker.Value.*;
 public class Player {
     PlayerState state;
     List<Card> hand;
+    Action action;
     Value value;
     int money;
     int bet;
 
-    Player() {
+    Player(int money) {
+        this.money = money;
         hand = new ArrayList<>();
     }
 
@@ -22,54 +24,54 @@ public class Player {
         this.bet = bet;
     }
 
-    public void bet(int bet) {
-        setBet(bet);
-    }
-
-    public void fold() {}
-
-    public void check() {}
-
-    public void call(int bet) {
-        setBet(bet);
-    }
-
-    public void raise(int bet) {
-        setBet(bet);
-    }
-
-    public void allin() {
-        setBet(money);
-    }
-
-    public int act(int maxBet) {
-        System.out.println("The current max bet is " + maxBet + ", PLease give your option followed by amount: BET, FOLD, CHECK, CALL, RAISE: ");
-        Scanner scanner = new Scanner(System.in);
-        String option = scanner.next();
-        state = PlayerState.valueOf(option);
-        int bet = scanner.nextInt();
-        switch (state) {
-            case BET:
-                bet(bet);
-                break;
-            case FOLD:
-                fold();
-                break;
-            case CHECK:
-                check();
-                break;
-            case CALL:
-                call(maxBet);
-                break;
-            case RAISE:
-                raise(bet);
-                break;
-            case ALLIN:
-                allin();
-                break;
-        }
-        return Math.max(maxBet, bet);
-    }
+//    public void bet(int bet) {
+//        setBet(bet);
+//    }
+//
+//    public void fold() {}
+//
+//    public void check() {}
+//
+//    public void call(int bet) {
+//        setBet(bet);
+//    }
+//
+//    public void raise(int bet) {
+//        setBet(bet);
+//    }
+//
+//    public void allin(int bet) {
+//        setBet(bet);
+//    }
+//
+//    public int act(int maxBet) {
+//        System.out.println("The current max bet is " + maxBet + ", PLease give your option followed by amount: BET, FOLD, CHECK, CALL, RAISE: ");
+//        Scanner scanner = new Scanner(System.in);
+//        String option = scanner.next();
+//        state = PlayerState.valueOf(option);
+//        int bet = scanner.nextInt();
+//        switch (state) {
+//            case BET:
+//                bet(bet);
+//                break;
+//            case FOLD:
+//                fold();
+//                break;
+//            case CHECK:
+//                check();
+//                break;
+//            case CALL:
+//                call(maxBet);
+//                break;
+//            case RAISE:
+//                raise(bet);
+//                break;
+//            case ALLIN:
+//                allin(bet);
+//                break;
+//        }
+//        return Math.max(maxBet, bet);
+//    }
 
     public void evaluate() {
         if (state == FOLD) {

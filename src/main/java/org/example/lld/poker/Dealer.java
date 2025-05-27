@@ -8,8 +8,8 @@ import static org.example.lld.poker.PlayerState.FOLD;
 public class Dealer {
     Deck deck;
 
-    Dealer() {
-        deck = new Deck();
+    Dealer(Deck deck) {
+        this.deck = deck;
         shuffle();
     }
 
@@ -36,23 +36,23 @@ public class Dealer {
         players.stream().filter(player -> player.state != FOLD).forEach(player -> player.hand.add(card));
     }
 
-    public void dealHole(List<Player> players) {
-        for (int i = 0; i < 2; i++) {
-            dealToPlayers(players);
-        }
-    }
-
-    public void dealFlop(List<Player> players) {
-        for (int i = 0; i < 3; i++) {
-            dealToTable(players);
-        }
-    }
-
-    public void dealTurn(List<Player> players) {
-        dealToTable(players);
-    }
-
-    public void dealRiver(List<Player> players) {
-        dealToTable(players);
-    }
+//    public void dealHole(List<Player> players) {
+//        for (int i = 0; i < 2; i++) {
+//            dealToPlayers(players);
+//        }
+//    }
+//
+//    public void dealFlop(List<Player> players) {
+//        for (int i = 0; i < 3; i++) {
+//            dealToTable(players);
+//        }
+//    }
+//
+//    public void dealTurn(List<Player> players) {
+//        dealToTable(players);
+//    }
+//
+//    public void dealRiver(List<Player> players) {
+//        dealToTable(players);
+//    }
 }

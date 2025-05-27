@@ -1,7 +1,17 @@
-package org.example.lld;
+package org.example.lld.chess;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+enum Status {
+    ACTIVE,
+    BLACK_WIN,
+    WHITE_WIN,
+    FORFEIT,
+    STALEMATE,
+    RESIGNATION;
+}
 
 public class Chess {
     boolean end = false;
@@ -9,11 +19,13 @@ public class Chess {
     Player[] players;
     Player turn;
     Random random;
+    List<Move> playedMove;
 
     public Chess(Board board, Player[] players) {
         this.board = board;
         this.players = players;
         random = new Random();
+        playedMove = new ArrayList<>();
     }
 
     void start () {
@@ -27,9 +39,10 @@ public class Chess {
     public boolean playMove(Player player, int startX, int startY, int endX, int endY) {
         Box startBox = board.boxes[startX][startY];
         Box endBox = board.boxes[endX][endY];
-        Move move = new Move(startBox, endBox);
+        Move move = new Move(player, startBox, endBox);
         if (player.canMove(move)) {
             player.move(move);
+            playedMove.add(move);
             return true;
         }
         else return false;
@@ -79,11 +92,13 @@ class Player {
 }
 
 class Move {
+    Player player;
     Piece movedPiece;
     Piece killedPiece;
     Box startBox;
     Box endBox;
-    public Move (Box startBox, Box endBox) {
+    public Move (Player player, Box startBox, Box endBox) {
+        this.player = player;
         this.startBox = startBox;
         this.endBox = endBox;
     }
