@@ -51,19 +51,7 @@ class User {
     }
 
     public Post createPost() {
-        return postFactory.createPost();
-    }
-
-    public Post createQuestion() {
-        return QuestionFactory.getInstance().createPost();
-    }
-
-    public Post createAnswer() {
-        return AnswerFactory.getInstance().createPost();
-    }
-
-    public Post createComment() {
-        return CommentFactory.getInstance().createPost();
+        return postFactory.create();
     }
 
     public void upvote(Post post) {
@@ -76,11 +64,11 @@ class User {
 
 }
 
-abstract class PostFactory {
-    public abstract Post createPost();
+interface PostFactory {
+    Post create();
 }
 
-class QuestionFactory extends PostFactory {
+class QuestionFactory implements PostFactory {
     private static QuestionFactory instance;
     private QuestionFactory() {
     }
@@ -91,12 +79,12 @@ class QuestionFactory extends PostFactory {
     }
 
     @Override
-    public Post createPost() {
+    public Post create() {
         return new Question();
     }
 }
 
-class AnswerFactory extends PostFactory {
+class AnswerFactory implements PostFactory {
     private static AnswerFactory instance;
     private AnswerFactory() {
     }
@@ -107,12 +95,12 @@ class AnswerFactory extends PostFactory {
     }
 
     @Override
-    public Post createPost() {
+    public Post create() {
         return new Answer();
     }
 }
 
-class CommentFactory extends PostFactory  {
+class CommentFactory implements PostFactory  {
     private static CommentFactory instance;
     private CommentFactory() {
     }
@@ -122,7 +110,7 @@ class CommentFactory extends PostFactory  {
         return instance;
     }
 
-    public Post createPost() {
+    public Post create() {
         return new Comment();
     }
 }
@@ -139,13 +127,10 @@ class Client {
         User user = userFactory.createUser();
         user.setPostFactory(QuestionFactory.getInstance());
         Post question = user.createPost();
-        question = user.createQuestion();
         user.setPostFactory(AnswerFactory.getInstance());
         Post answer = user.createPost();
-        answer = user.createAnswer();
         user.setPostFactory(CommentFactory.getInstance());
         Post comment = user.createPost();
-        comment = user.createComment();
         user.upvote(question);
         user.upvote(answer);
         user.upvote(comment);
