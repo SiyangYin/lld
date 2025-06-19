@@ -4,7 +4,7 @@ import java.util.*;
 
 public class demo1 {
     public static void main(String[] args) {
-        Arrays.stream(new int[1]).mapToObj(i -> i).toList()
+        Arrays.stream(new int[1]).mapToObj(i -> i).toList();
 //        "".chars()
 //        LinkedList<Integer> l = new LinkedList<>();
 //        l.addFirst();

@@ -11,9 +11,6 @@ abstract class Post {
     private int upvotes;
     private int downvotes;
 
-    public Post() {
-    }
-
     public void upvote() {
         upvotes++;
     }
@@ -43,8 +40,6 @@ class Comment extends Post {
 
 class User {
     private PostFactory postFactory;
-    public User() {
-    }
 
     public void setPostFactory(PostFactory postFactory) {
         this.postFactory = postFactory;
